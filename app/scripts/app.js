@@ -1,11 +1,12 @@
 'use strict';
-angular.module('configuration', [])
-       .constant('API_END_POINT','80')
-       .constant('HOST','http://localhost')
-	   .constant('PHP_PATH','mailfetcher/mailfetch.php');
-
-angular.module('angularyeomanApp', [
-  'configuration',
+angular.module('allContacts')
+    .controller('allContactsCtrl', ['$scope',
+        function ($scope) {
+            $scope.allContactList = {};
+          }
+    ]);
+angular.module('contactsmanagerApp', [
+  'allContacts',
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -15,7 +16,15 @@ angular.module('angularyeomanApp', [
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'GoogleCtrl'
+      })
+	  .when('/google', {
+        templateUrl: 'views/main.html',
+        controller: 'GoogleCtrl'
+      })
+	  .when('/yahoo', {
+        templateUrl: 'views/main.html',
+        controller: 'YahooCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -2,11 +2,13 @@
         	<div class="col-lg-2">
             	<ul class="list-unstyled">
                 	<li><a href="#">All Contacts</a></li>
-                    <li><a href="#">Google</a></li>
-                	<li><a href="#">Yahoo</a></li>
+                    <li><a href="#/google">Google</a></li>
+                	<li><a href="#/yahoo">Yahoo</a></li>
                 </ul>
             </div>
             <div class="col-lg-10">
+            <h1>Current Contact list {{currentProvider}}</h1>
+            <a href="" ng-click="authorizeGoogle()">Import Contacts</a>
             	<table class="table table-striped">
                 	<thead>
                     	<tr>
@@ -16,21 +18,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                    	<tr>
-                        	<td>1</td>
-                            <td>Siva</td>
-                            <td>gmail@siva.com</td>
+                    	<tr ng-repeat="singleContact in mailData.feed.entry">
+                        	<td>{{$index+1}}</td>
+                            <td>{{singleContact.title.$t}}</td>
+                            <td>{{singleContact.gd$email[0].address}}</td>
                         </tr>
-                        <tr>
+                       <!-- <tr>
                         	<td>2</td>
-                            <td>Ani</td>
-                            <td>ani@siva.com</td>
+                            <td>{{mailData.feed.entry[3].title.$t}}</td>
+                            <td>{{firstAddress}}</td>
                         </tr>
                         <tr>
                         	<td>3</td>
                             <td>Senthil</td>
                             <td>senthil@siva.com</td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
